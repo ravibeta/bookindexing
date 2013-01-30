@@ -1,0 +1,8 @@
+Here is an outline of the design
+Functionality from Classify and parse package from NLTK framework is what we want. These can be viewed as :
+import nltk   # import the entire library
+nltk.chunk.regexp.demo()
+nltk.parse.chart.demo()
+nltk.sem.evaluate.demo()
+nltk.sem.logic.demo()
+We can create a graph of operators and pipe the text through it to find the N-Grams and their frequencies. Then we can pick out the ones we want to publish as index candidates.
