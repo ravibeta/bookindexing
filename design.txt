@@ -1,8 +1,8 @@
-Here is an outline of the design
-Functionality from Classify and parse package from NLTK framework is what we want. These can be viewed as :
+Design for a library in C++ to evaluate an index for the text of a book.
+This library will be similar to the python NLTK framework, specifically the parser and classify packages to generate NGrams which will be the index candidates for a decisionTree module. The design involves piping text through a series of operators which can be added to the input text flow as appropriate.  
 import nltk   # import the entire library
 nltk.chunk.regexp.demo()
 nltk.parse.chart.demo()
 nltk.sem.evaluate.demo()
 nltk.sem.logic.demo()
-We can create a graph of operators and pipe the text through it to find the N-Grams and their frequencies. Then we can pick out the ones we want to publish as index candidates.
+
