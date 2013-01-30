@@ -1,5 +1,5 @@
 Design for a library in C++ to evaluate an index for the text of a book.
-This library will be similar to the python NLTK framework, specifically the parser and classify packages to generate NGrams which will be the index candidates for a decisionTree module. The design involves piping text through a series of operators which can be added to the input text flow as appropriate.  
+This library will be similar to the python NLTK framework, specifically the parser, classify and collocation packages to generate NGrams which will be the index candidates for a decisionTree module. The design involves piping text through a series of operators which can be added to the input text flow as appropriate.  
 import nltk   # import the entire library
 nltk.chunk.regexp.demo()
 nltk.parse.chart.demo()
