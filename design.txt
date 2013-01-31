@@ -9,5 +9,18 @@ words = [w.lower() for w in text)]
 vocab = sorted(set(words))
 disp = text.dispersion_plot([w for w in vocab])
 index = [w for w in disp.density > threshold]
-The purpose of this design is to quickly generate an index and not to create another natural language processing library. At the same time, use of such library to generate NGrams as index candidates is not restricted. 
-We build a table on the vocab as mentioned above and with the following attributes: offset, frequency, Tags, page number, heading, subheading, BiGram Word, Trigram words. This table can be in an in-memory data store where each of the tuples are stored as nodes in a lock-free skip-list.
+The purpose of this design is to quickly generate an index and not to create another 
+natural language processing library. At the same time, use of such library to generate 
+NGrams as index candidates is not restricted. We build a table on the vocab as mentioned 
+above and with the following attributes: offsets, frequency, Tags, emphasization, PMI
+page number, heading, subheading, BiGram Word, Trigram words, collocation words. This 
+table can be in an in-memory data store where each of the tuples are stored as nodes in 
+a lock-free skip-list. The words will be parsed and populated in our table as they are 
+encountered. Page numbers are calculated based on offsets or from document rendering. Whenever 
+the rendering changes or the begin and last offset of each page changes, the table will need 
+to be updated. The table respects the headings and other markup information available for the 
+text that may be helpful to evaluate index candidates such as headings, subheadings, 
+bold, italics, quotation marks etc. But with all else equal such as the words in a paragraph 
+sharing the same sub-heading and spanning several pages, the criteria to evaluate index candidates
+would be based on Pointwise Mutual Information. PMI classification would be done separately as 
+available from tag generation. 
