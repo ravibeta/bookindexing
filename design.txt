@@ -1,8 +1,12 @@
 Design for a library in C++ to evaluate an index for the text of a book.
 This library will be similar to the python NLTK framework, specifically the parser, classify and collocation packages to generate NGrams which will be the index candidates for a decisionTree module. The design involves piping text through a series of operators which can be added to the input text flow as appropriate.  
-import nltk   # import the entire library
-nltk.chunk.regexp.demo()
-nltk.parse.chart.demo()
-nltk.sem.evaluate.demo()
-nltk.sem.logic.demo()
-
+raw = nltk.clean_html(html)
+tokens = nltk.word_tokenize(raw)
+text.collocations()
+text.concordance('gene')
+text = nltk.Text(tokens)
+words = [w.lower() for w in text)]
+vocab = sorted(set(words))
+disp = text.dispersion_plot([w for w in vocab])
+index = [w for w in disp.density > threshold]
+The purpose of this design is to quickly generate an index and not to create another natural language processing library. At the same time, use of such library to generate NGrams as index candidates is not restricted. 
