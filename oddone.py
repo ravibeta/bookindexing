@@ -28,7 +28,8 @@ def indexConditionalFreqDist(text, commonwords):
   
   def indexUnstructuredDocument(text, commonwords)
    V =  indexUniGram(text, commonwords)
-   return [ v for v in V if v not in WordNet.ancestor(v) ]
+   l = [ v for v in V if v not in WordNet.ancestor(v) ]
+   return l[:50]
 # view the document as sections
 # pick out salient words based on fequency
 # use the wordnet to find the common ancestor
