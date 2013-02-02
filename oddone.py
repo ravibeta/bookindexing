@@ -30,7 +30,8 @@ def indexConditionalFreqDist(text, commonwords):
     
   def indexUnstructuredDocument(text, commonwords)
    V =  indexUniGram(text, commonwords)
-   l = [ v for v in V if v not in wn.synset(v).min_depth() > 7 ]
+   fdist = FreqDist([m for t in v if (t != v && m = v.path_similarity(t))])
+   l = [ t for v in V if fdist(v).max() ]
    return l[:50]
 # view the document as sections
 # pick out salient words based on fequency
