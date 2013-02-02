@@ -26,9 +26,11 @@ def indexConditionalFreqDist(text, commonwords):
   category = [text[1:l/3], text[(l/3)+1:2*l/3], text[(2*1/3)+1, l]]
   return cfd.tabulate(conditions = category, samples = vocabulary)
   
+  from nltk.corpus import wordnet as wn
+    
   def indexUnstructuredDocument(text, commonwords)
    V =  indexUniGram(text, commonwords)
-   l = [ v for v in V if v not in WordNet.ancestor(v) ]
+   l = [ v for v in V if v not in wn.synset(v).min_depth() > 7 ]
    return l[:50]
 # view the document as sections
 # pick out salient words based on fequency
@@ -39,4 +41,4 @@ def indexConditionalFreqDist(text, commonwords):
   def indexStructuredDocument(text, commonwords)
     return indexUniGram(textHeading, commonwords).Intersect(indexUniGram(textSubHeadings, commonwords))
 
- 
+  
