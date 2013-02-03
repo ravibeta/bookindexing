@@ -42,4 +42,28 @@ def indexConditionalFreqDist(text, commonwords):
   def indexStructuredDocument(text, commonwords)
     return indexUniGram(textHeading, commonwords).Intersect(indexUniGram(textSubHeadings, commonwords))
 
+
+def indexWordNetSimilarity(txt):
+    fdist = FreqDist(txt)
+    total = len(text)
+    count = 0;
+    n = 0;
+    for sample in fdist:
+        count += fdist.freq(sample)
+        n += 1
+        if (count > total / 2):
+            break
+    fdist.plot(n, cumulative=True)
+    vocabulary = sorted([w for w in fdist.keys() if (len(w) > 7 and fdist[w] > 2)])
+    candidates = []
+    for v in vocabulary:
+        max = 0;
+        candidate = '';
+        for t in vocabulary:
+            if (t != v && t.path_similarity(v) > max):
+            candidate = t;
+        candidates.append(t);
+    indexcandidates = sorted(set(candidates))
+    return indexcandidates
+
   
