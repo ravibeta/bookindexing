@@ -1,8 +1,27 @@
-def indexUniGram(text, commonwords):
- fdist5 = FreqDist(text5)
- fdist5.hapaxes()
- vocabulary = sorted([w for w in set(text5) if ( w not in commonwords || (len(w) > 7 and fdist5[w] > 7))])  
- return vocabulary[:50]
+import nltk
+from nltk.corpus import wordnet as wn
+
+def indexWordNetSimilarity(txt):
+    fdist = nltk.FreqDist(txt)
+    total = len(text)
+    count = 0;
+    n = 0;
+    for sample in fdist:
+        count += fdist.freq(sample)
+        n += 1
+        if (count > total / 2):
+            break
+    # fdist.plot(n, cumulative=True)
+    vocabulary = sorted([w for w in fdist.keys() if (len(w) > 5 and fdist[w] > 2)])
+    candidates = []
+    import itertools
+    for i in itertools.product(vocabulary, vocabulary):
+        t = i, wn.synsets(i[0])[0].path_similarity(wn.synsets(i[1])[0])
+        if (t[1] > 0.2 and t[1] < 1.0):
+            candidates.append(t[0][0])
+            candidates.append(t[0][1])
+        candidates = sorted(set(candidates))
+    return candidates
  
 def indexBiGram(text, commonwords):
   V = text.collocations()
@@ -42,28 +61,3 @@ def indexConditionalFreqDist(text, commonwords):
   def indexStructuredDocument(text, commonwords)
     return indexUniGram(textHeading, commonwords).Intersect(indexUniGram(textSubHeadings, commonwords))
 
-
-def indexWordNetSimilarity(txt):
-    fdist = FreqDist(txt)
-    total = len(text)
-    count = 0;
-    n = 0;
-    for sample in fdist:
-        count += fdist.freq(sample)
-        n += 1
-        if (count > total / 2):
-            break
-    fdist.plot(n, cumulative=True)
-    vocabulary = sorted([w for w in fdist.keys() if (len(w) > 7 and fdist[w] > 2)])
-    candidates = []
-    for v in vocabulary:
-        max = 0;
-        candidate = '';
-        for t in vocabulary:
-            if (t != v && t.path_similarity(v) > max):
-            candidate = t;
-        candidates.append(t);
-    indexcandidates = sorted(set(candidates))
-    return indexcandidates
-
-  
