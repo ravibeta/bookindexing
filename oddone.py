@@ -1,3 +1,4 @@
+text = 'Clustering and Segmentation. Clustering is a data mining technique that is directed towards the goals of identification and classification. Clustering tries to identify a finite set of categories or clusters to which each data object (tuple) can be mapped. The categories may be disjoint or overlapping and may sometimes be organized into trees. For example, one might form categories of customers into the form of a tree and then map each customer to one or more of the categories. A closely related problem is that of estimating multivariate probability density functions of all variables that could be attributes in a relation or from different relations.'
 import nltk
 from nltk.corpus import wordnet as wn
 
@@ -5,12 +6,6 @@ def indexWordNetSimilarity(txt):
     fdist = nltk.FreqDist(txt)
     total = len(text)
     count = 0;
-    n = 0;
-    for sample in fdist:
-        count += fdist.freq(sample)
-        n += 1
-        if (count > total / 2):
-            break
     # fdist.plot(n, cumulative=True)
     vocabulary = sorted([w for w in fdist.keys() if (len(w) > 5 and fdist[w] > 2)])
     candidates = []
@@ -22,6 +17,8 @@ def indexWordNetSimilarity(txt):
             candidates.append(t[0][1])
         candidates = sorted(set(candidates))
     return candidates
+
+print indexWordNetSimilarity(text.split())
  
 def indexBiGram(text, commonwords):
   V = text.collocations()
