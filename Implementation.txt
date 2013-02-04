@@ -2,13 +2,13 @@ Abstract:
 
 Automatic Document Indexing of an unstructured document involves cherry picking of words from various parts of the 
 
-document and classifying them. Research has proposed Statistical and linguistic methods, Machine learning, neural-
+document and classifying them. Research has proposed statistical and linguistic methods, machine learning, neural-
 
-networks, self-organizing maps and connectionist models.Among the linguistic methods, natural language processing 
+networks, self-organizing maps and connectionist models. Among the linguistic methods, natural language processing 
 
-libraries have enabled semantic interpretaion of index candidates. In the absence of other input in terms of mark-ups, 
+libraries have enabled semantic interpretation of index candidates. In the absence of other input in terms of mark-ups, 
 
-metadata or punctuations, the index candidates could be picked up based on cluster and outliers to the topics presented in 
+metadata or punctuations, the index candidates could be picked up based on clusters and outliers to the topics presented in 
 
 the text. To detect semantic relevance of the words, we can use concept hierarchy structures such as from WordNet. In a 
 
@@ -21,9 +21,7 @@ Design:
 
 I propose a single table with the record of all words occuring in the document and their attributes. Attributes will 
 
-include The table will have the following columns words, their offsets and page numbers, frequency, tags and emphasis 
-
-etc.candidates will be unigrams. 
+include the following: word offsets, page numbers, frequency, tags and emphasis etc. Candidates will be unigrams. 
 
 Classifier logic could be written in separate modules to determine the clusters and outliers in the above table. 
  
@@ -37,7 +35,11 @@ Clustering and index selection is the next step
 
 Advantages:
 The index selected will be semantically organized and connected.
+Entries and Sub-Entries can be computed with different interchange-able classifier algorithms.
+Index candidates could be a common subset of various classifier.
 
 Disadvantages:
 The index selected will be single word representations
+Clusters could miss the newly introduced words that are not in dictionary or ontology used
+Outliers could miss an idea that is not mentioned anywhere else.
 
