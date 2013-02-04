@@ -1,0 +1,43 @@
+Abstract:
+
+Automatic Document Indexing of an unstructured document involves cherry picking of words from various parts of the 
+
+document and classifying them. Research has proposed Statistical and linguistic methods, Machine learning, neural-
+
+networks, self-organizing maps and connectionist models.Among the linguistic methods, natural language processing 
+
+libraries have enabled semantic interpretaion of index candidates. In the absence of other input in terms of mark-ups, 
+
+metadata or punctuations, the index candidates could be picked up based on cluster and outliers to the topics presented in 
+
+the text. To detect semantic relevance of the words, we can use concept hierarchy structures such as from WordNet. In a 
+
+set of related words representing a cluster and all other things considered equal, we will pick the one appearing in the 
+
+text with the highest frequency.
+
+
+Design:
+
+I propose a single table with the record of all words occuring in the document and their attributes. Attributes will 
+
+include The table will have the following columns words, their offsets and page numbers, frequency, tags and emphasis 
+
+etc.candidates will be unigrams. 
+
+Classifier logic could be written in separate modules to determine the clusters and outliers in the above table. 
+ 
+Tables will be implemented as skip-lists in memory for fast traversal, insert and update.
+
+Document parsing and population of the table is the first step.
+
+Clustering and index selection is the next step
+
+
+
+Advantages:
+The index selected will be semantically organized and connected.
+
+Disadvantages:
+The index selected will be single word representations
+
