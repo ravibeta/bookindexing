@@ -1,6 +1,6 @@
 Abstract:
 
-Automatic Document Indexing of an unstructured document involves cherry picking of words from various parts of the 
+Automatic document indexing of an unstructured document involves cherry picking of words from various parts of the 
 
 document and classifying them. Research has proposed statistical and linguistic methods, machine learning, neural-
 
@@ -27,9 +27,9 @@ Classifier logic could be written in separate modules to determine the clusters 
  
 Tables will be implemented as skip-lists in memory for fast traversal, insert and update.
 
-Document parsing and population of the table is the first step.
+Document parsing, word stemming, canonicalization and population of the table is the first step.
 
-Clustering and index selection is the next step
+Clustering and index selection is the next step.
 
 
 
@@ -39,7 +39,7 @@ Entries and Sub-Entries can be computed with different interchange-able classifi
 Index candidates could be a common subset of various classifier.
 
 Disadvantages:
-The index selected will be single word representations
-Clusters could miss the newly introduced words that are not in dictionary or ontology used
+The index selected will be single word representations.
+Clusters could miss the newly introduced words that are not in dictionary or ontology used.
 Outliers could miss an idea that is not mentioned anywhere else.
 
